@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app1">
+        <todo-item :todo='todoList'></todo-item>
+    </div>
+</body>
+<script>
+    Vue.component('todo-item', {
+        props: ['todo'],
+        template: `<div> <ul v-for = "item in todo" :key = "item.id" ><li> {{item.text}} </li> </ul> </div>`
+    })
+</script>
+<script>
+    let app1 = new Vue({
+        el: '#app1',
+        data: {
+            todoList: [{
+                id: 0,
+                text: '蔬菜'
+            }, {
+                id: 1,
+                text: '肉'
+            }, {
+                id: 2,
+                text: '蛋糕'
+            }]
+        }
+    })
+</script>
+
+</html>

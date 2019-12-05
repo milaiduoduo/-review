@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件的局部注册</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <component-a :msg="msg"></component-a>
+    </div>
+    <h2>1、对于需要局部注册的组件，可以通过一个普通的javascript对象来定义！</h2>
+    <h4>如：var ComponentA = { /* ... */ }</h4>
+    <h2>2、然后在当前vue页面components选项中，定义你想要使用的组件。</h2>
+    <h4>如：components: {'component-a': ComponentA},</h4>
+</body>
+<script>
+    var ComponentA = {
+        props: ['msg'],
+        template: '<h1>{{msg}}</h1>'
+    }
+</script>
+<script>
+    let app = new Vue({
+        el: '#app',
+        components: {
+            'component-a': ComponentA
+        },
+        data: {
+            msg: '这是一个组件局部注册的示例'
+        }
+
+    })
+</script>
+
+</html>

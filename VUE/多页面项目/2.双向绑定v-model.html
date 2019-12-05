@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app1">
+        <p>{{message}}</p>
+        <input type="text" @input="handleInput" placeholder="使用@input实现">
+    </div>
+    <hr>
+    <div id="app2">
+        <input type="text" v-model="message" placeholder="使用语法糖v-model实现">
+        <p>{{message}}</p>
+    </div>
+</body>
+<script>
+    let app1 = new Vue({
+        el: '#app1',
+        data: {
+            message: ''
+        },
+        methods: {
+            handleInput: function (e) {
+                this.message = e.target.value
+            }
+        }
+    })
+
+    let app2 = new Vue({
+        el: "app2",
+        data: {
+            message: ''
+        }
+    })
+</script>
+
+</html>
